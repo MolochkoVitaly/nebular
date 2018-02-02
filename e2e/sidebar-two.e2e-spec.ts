@@ -8,8 +8,8 @@ import { browser, element, by } from 'protractor';
 
 describe('nb-sidebar-two', () => {
 
-  beforeEach(() => {
-    browser.get('#/sidebar/two');
+  beforeEach((done) => {
+    browser.get('#/sidebar/two').then(() => done());
   });
 
   // it('should render right fixed sidebar height equal layout height', () => {
@@ -23,7 +23,7 @@ describe('nb-sidebar-two', () => {
   // });
 
   it('should render left non-fixed sidebar height minus header', () => {
-    Promise.all([
+    Promise.all<any, any, any>([
       element(by.css('nb-layout')).getSize(),
       element(by.css('nb-layout-header')).getSize(),
       element.all(by.css('nb-sidebar')).get(0).getSize(),

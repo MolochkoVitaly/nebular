@@ -7,8 +7,8 @@
 import { browser, element, by } from 'protractor';
 
 describe('nb-layout', () => {
-  beforeEach(() => {
-    browser.get('#/layout');
+  beforeEach((done) => {
+    browser.get('#/layout').then(() => done());
   });
 
   it('should render container', () => {
@@ -19,7 +19,7 @@ describe('nb-layout', () => {
 
   it('should have correct font-family', () => {
     element(by.css('#layout-fluid > .scrollable-container > .layout')).getCssValue('font-family').then(value => {
-      expect(value).toMatch('"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif');
+      expect(value.replace(/"/g, `'`)).toMatch(`'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`);
     });
   });
 

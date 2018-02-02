@@ -5,7 +5,6 @@
  */
 
 import { Injectable } from '@angular/core';
-import { NbMenuItem } from '@nebular/theme';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +16,7 @@ const PARSEDDOCS: any = require('../../output.json');
 @Injectable()
 export class DocsService {
 
-  private fragments$ = new Subject();
+  private fragments$ = new Subject<string>();
 
   getStructure(): any {
     return STRUCTURE;

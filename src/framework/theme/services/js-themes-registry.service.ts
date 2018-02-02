@@ -6,7 +6,6 @@
 
 import { Inject, Injectable } from '@angular/core';
 
-import 'rxjs/add/operator/publish';
 
 import { NbJSThemeOptions } from './js-themes/theme.options';
 import { DEFAULT_THEME } from './js-themes/default.theme';
@@ -27,8 +26,8 @@ export class NbJSThemesRegistry {
 
   private themes: any = {};
 
-  constructor(@Inject(nbBuiltInJSThemesToken) private builtInThemes: NbJSThemeOptions[],
-              @Inject(nbJSThemesToken) private newThemes: NbJSThemeOptions[] = []) {
+  constructor(@Inject(nbBuiltInJSThemesToken) builtInThemes: NbJSThemeOptions[],
+              @Inject(nbJSThemesToken) newThemes: NbJSThemeOptions[] = []) {
 
     const themes = this.combineByNames(newThemes, builtInThemes);
 

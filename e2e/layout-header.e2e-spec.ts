@@ -8,8 +8,8 @@ import { browser, element, by } from 'protractor';
 
 describe('nb-layout-header', () => {
 
-  beforeEach(() => {
-    browser.get('#/layout/header');
+  beforeEach((done) => {
+    browser.get('#/layout/header').then(() => done());
   });
 
   it('should render default header', () => {
@@ -32,7 +32,7 @@ describe('nb-layout-header', () => {
 
   it('should align items vertically', () => {
     element(by.css('nb-layout-header nav')).getCssValue('justify-content').then(value => {
-      expect(value).toEqual('normal');
+      expect(value).toEqual('flex-start');
     });
   });
 

@@ -7,14 +7,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import {
   NbActionsModule,
   NbCardModule,
   NbLayoutModule,
-  NbMenuItem,
   NbMenuModule,
   NbRouteTabsetModule,
   NbSearchModule,
@@ -28,7 +26,6 @@ import {
   NB_AUTH_TOKEN_WRAPPER_TOKEN,
   NbAuthJWTToken,
   NbAuthModule,
-  NbDummyAuthProvider,
   NbEmailPassAuthProvider,
   NbAuthJWTInterceptor,
 } from '@nebular/auth';
@@ -70,10 +67,11 @@ import { NbBootstrapTestComponent } from './bootstrap-test/bootstrap-test.compon
 import { routes } from './app.routes';
 
 import { NbSearchTestComponent } from './search-test/search-test.component';
+import { NbSearchTestCustomizedComponent } from './search-test/search-test-customized.component';
 import { NbFormsTestComponent } from './forms-test/forms-test.component';
 
 import { NbCardTestComponent } from './card-test/card-test.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth-guard.service';
 
 const NB_TEST_COMPONENTS = [
@@ -103,6 +101,7 @@ const NB_TEST_COMPONENTS = [
   NbUserTestComponent,
   NbThemeChangeTestComponent,
   NbSearchTestComponent,
+  NbSearchTestCustomizedComponent,
   NbBootstrapTestComponent,
   NbDynamicToAddComponent,
   NbThemeDynamicTestComponent,
@@ -115,12 +114,11 @@ const NB_TEST_COMPONENTS = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     NbThemeModule.forRoot({ name: 'default' }),
     NbCardModule,
     NbLayoutModule,
-    NbMenuModule.forRoot(),
     NbMenuModule.forRoot(),
     NbRouteTabsetModule,
     NbSidebarModule.forRoot(),
